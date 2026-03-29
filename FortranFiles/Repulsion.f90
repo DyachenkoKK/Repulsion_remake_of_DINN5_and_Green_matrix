@@ -7,9 +7,7 @@
     
     implicit none    
     
-	!call Init_RP
-    call speed_tests_for_Gauss_LU_method
-    
+    call test_speed_star5
     pause
    
     

@@ -51,6 +51,7 @@
 		<File RelativePath=".\DINN5_Modern_remake\simpson_integrate.f90"/></Filter>
 		<Filter Name="K_matrix_modern_remake">
 		<Filter Name="STAR5_modern_remake">
+		<File RelativePath=".\K_matrix_modern_remake\STAR5_modern_remake\Gram_Schmidt_solver.f90"/>
 		<File RelativePath=".\K_matrix_modern_remake\STAR5_modern_remake\LU_Gaussian_elimination.f90"/></Filter></Filter>
 		<Filter Name="Polygone">
 		<Filter Name="Polygone_tests">
@@ -177,6 +178,7 @@
 		<File RelativePath=".\FortranFiles\test_print_K.f90"/></Filter>
 		<Filter Name="Tests">
 		<Filter Name="Test_STAR5_modern_remake">
-		<File RelativePath=".\Tests\Test_K_matrix_modern_remake\Test_STAR5_modern_remake\test_get_determinant_by_LU_Gaussian elimination.f90"/></Filter></Filter>
+		<File RelativePath=".\Tests\Test_K_matrix_modern_remake\Test_STAR5_modern_remake\test_get_determinant_by_LU_Gaussian elimination.f90"/>
+		<File RelativePath=".\Tests\Test_K_matrix_modern_remake\Test_STAR5_modern_remake\test_get_solution_by_Gram_Schmidt_solver.f90"/></Filter></Filter>
 		<File RelativePath=".\FortranFiles\Repulsion.f90"/></Files>
 	<Globals/></VisualStudioProject>
