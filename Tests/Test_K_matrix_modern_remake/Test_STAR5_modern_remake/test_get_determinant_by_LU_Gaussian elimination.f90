@@ -4,7 +4,7 @@ implicit none
 contains
     
     subroutine result_tests_for_Gauss_LU_method
-    use polygone, only: test_func
+    use LU_Gaussian_elimination, only:get_determinant_by_LU_Gaussian_elimination
     implicit none
     
         integer :: i, j
@@ -33,7 +33,7 @@ contains
         expected_det = (4.0d0, 0.0d0)
     
         call DGAUS(A_old, ND, N, det_old)
-        call test_func(A_new, ND, N, det_new)
+        call get_determinant_by_LU_Gaussian_elimination(A_new, ND, N, det_new)
     
         print *, "Old routine determinant: ", det_old
         print *, "New routine determinant: ", det_new
@@ -64,7 +64,7 @@ contains
         expected_det = (0.0d0, 0.0d0)  ! This matrix is singular (determinant = 0)
     
         call DGAUS(A_old, ND, N, det_old)
-        call test_func(A_new, ND, N, det_new)
+        call get_determinant_by_LU_Gaussian_elimination(A_new, ND, N, det_new)
     
         print *, "Old routine determinant: ", det_old
         print *, "New routine determinant: ", det_new
@@ -94,7 +94,7 @@ contains
         expected_det = (0.0d0, -16.0d0)
     
         call DGAUS(A_old, ND, N, det_old)
-        call test_func(A_new, ND, N, det_new)
+        call get_determinant_by_LU_Gaussian_elimination(A_new, ND, N, det_new)
     
         print *, "Old routine determinant: ", det_old
         print *, "New routine determinant: ", det_new
@@ -121,7 +121,7 @@ contains
         expected_det = (1.0d0, 0.0d0)
     
         call DGAUS(A_old, ND, N, det_old)
-        call test_func(A_new, ND, N, det_new)
+        call get_determinant_by_LU_Gaussian_elimination(A_new, ND, N, det_new)
     
         print *, "Old routine determinant: ", det_old
         print *, "New routine determinant: ", det_new
@@ -146,7 +146,7 @@ contains
         A_new = A_old
     
         call DGAUS(A_old, ND, N, det_old)
-        call test_func(A_new, ND, N, det_new)
+        call get_determinant_by_LU_Gaussian_elimination(A_new, ND, N, det_new)
     
         print *, "Old routine determinant: ", det_old
         print *, "New routine determinant: ", det_new
@@ -217,8 +217,8 @@ contains
     
     
     
-   subroutine speed_tests_for_Gauss_LU_method
-    use polygone
+    subroutine speed_tests_for_Gauss_LU_method
+    use LU_Gaussian_elimination, only:get_determinant_by_LU_Gaussian_elimination
     implicit none
     
     integer :: i, n_size
@@ -319,7 +319,7 @@ contains
             
                 ! Test new routine (test_func)
                 call cpu_time(start_time)
-                call test_func(A_new, n, n, det_new)
+                call get_determinant_by_LU_Gaussian_elimination(A_new, n, n, det_new)
                 call cpu_time(end_time)
                 
                 if (is_nan_complex(det_new) .or. abs(det_new) < 1.0d-50) then
@@ -392,7 +392,7 @@ contains
                 call generate_non_singular_matrix(A_old, n, n)
                 A_new = A_old
                 call DGAUS(A_old, n, n, det_old)
-                call test_func(A_new, n, n, det_new)
+                call get_determinant_by_LU_Gaussian_elimination(A_new, n, n, det_new)
             end do
         
             ! Actual timing with fresh matrices
@@ -407,7 +407,7 @@ contains
         
             ! Time test_func
             call cpu_time(start_time)
-            call test_func(A_new, n, n, det_new)
+            call get_determinant_by_LU_Gaussian_elimination(A_new, n, n, det_new)
             call cpu_time(end_time)
             time_new = end_time - start_time
             
